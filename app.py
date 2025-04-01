@@ -45,31 +45,27 @@ def pagina_teo():
     for _, row in dados_filtrados.iterrows():
         if campo1 <= 1000:
             resultado = campo1 * row["Coluna 2"]
+            area_real = campo1
+            exct = 0
         else:
             resultado = 1000 * row["Coluna 2"] + ((campo1 - 1000) * row["Coluna 3"])
-            exct = (campo1 - 1000)
-        resultados.append((row["Ano"], resultado))
+            area_real = 1000
+            exct = campo1 - 1000
+
         soma_total += resultado
 
-    if campo1 <= 1000:
-        area_real = campo1
-    else:
-        area_real = 1000
-    
-    # Exibição dos resultados
-    st.subheader("Resultados")
-    for ano, resultado in resultados:
-        st.write(f"**Ano {int(ano)}**")
-        st.write(f"Fica o responsável pela execução da obra, AUTUADO por não efetuar a declaração da Taxa de Execução de Obras - TEO, referente ao exercício {int(ano)}")
+        # Exibição dos resultados
+        st.subheader(f"**Ano {int(row['Ano'])}**")
+        st.write(f"Fica o responsável pela execução da obra, AUTUADO por não efetuar a declaração da Taxa de Execução de Obras - TEO, referente ao exercício {int(row['Ano'])}")
         st.write(f"Memória de Cálculo:")        
-        st.write(f"Metro quadrado até áreas de 1000m²= R$ {row["Coluna 2"]}")
-        st.write(f"Valor excedente = R$ {row["Coluna 3"]}")
-        st.write(f"Área (m²) {campo1:.2f}")
-        st.write(f"Valor até 1000m² = {area_real:.2f} X {row["Coluna 2"]}= R$ {(area_real * row['Coluna 2']):.2f} ")
-        st.write(f"Valor excedente = {exct:.2f} X {row["Coluna 3"]}= R$ {(exct * row['Coluna 3']):.2f} ")
-        st.write(f"Valor total para {int(ano)}: R$ {resultado:.2f}")     
+        st.write(f"Metro quadrado até áreas de 1000m²= R$ {row['Coluna 2']:.2f}")
+        st.write(f"Valor excedente = R$ {row['Coluna 3']:.2f}")
+        st.write(f"Área (m²): {campo1:.2f}")
+        st.write(f"Valor até 1000m² = {area_real:.2f} X {row['Coluna 2']:.2f} = R$ {(area_real * row['Coluna 2']):.2f}")
+        st.write(f"Valor excedente = {exct:.2f} X {row['Coluna 3']:.2f} = R$ {(exct * row['Coluna 3']):.2f}")
+        st.write(f"Valor total para {int(row['Ano'])}: R$ {resultado:.2f}")     
         st.write(f"Prazo: 30 dias")  
-        st.write(f"--------------------------------------")  
+        st.write(f"--------------------------------------")
 
 
 if __name__ == "__main__":
