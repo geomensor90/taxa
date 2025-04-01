@@ -64,7 +64,8 @@ def pagina_teo():
         st.write(f"Valor até 1000m² = {area_real:.2f} X {row['Coluna 2']:.2f} = R$ {(area_real * row['Coluna 2']):.2f}")
         st.write(f"Valor excedente = {exct:.2f} X {row['Coluna 3']:.2f} = R$ {(exct * row['Coluna 3']):.2f}")
         st.write(f"Valor total para {int(row['Ano'])}: R$ {resultado:.2f}")     
-        st.write(f"Prazo: 30 dias")  
+        st.write(f"Prazo: 30 dias")
+        st.write(f"§ 1º Na hipótese de recolhimento integral da taxa, o valor da multa prevista no caput será reduzido em 80% (oitenta por cento) se o pagamento for efetuado no prazo de até 20 (vinte) dias contados da data em que o contribuinte ou responsável for notificado da exigência.")          
         st.write(f"--------------------------------------")
 
 
